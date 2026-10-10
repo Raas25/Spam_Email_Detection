@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "Spam Email Detector",
+  "version": "1.0",
+  "description": "Detect spam emails in Gmail.",
+  "permissions": ["activeTab"],
+  "host_permissions": [
+    "https://mail.google.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://mail.google.com/*"],
+      "js": ["content.js"]
+    }
+  ]
+}
