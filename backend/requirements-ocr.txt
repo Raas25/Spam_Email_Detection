@@ -1,0 +1,4 @@
+# Optional: OCR for text inside images (image-only emails).
+# RapidOCR downloads its ONNX models (~15 MB) on first use.
+rapidocr==3.10.0
+onnxruntime==1.31.0
