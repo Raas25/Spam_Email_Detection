@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Email Scan Report</title>
+  <link rel="stylesheet" href="../styles/ui.css">
+</head>
+<body>
+  <main class="app">
+    <header class="app-header">
+      <h1>Email Scan Report</h1>
+      <button type="button" id="settingsButton" class="link-button">Settings</button>
+    </header>
+
+    <div id="backendStatus" class="backend-status" role="status">Checking the analysis backend…</div>
+
+    <div class="actions">
+      <button type="button" id="scanButton" class="primary" disabled>Scan this email</button>
+    </div>
+
+    <details class="manual-headers" id="manualHeaders">
+      <summary>Check SPF / DKIM / DMARC with pasted headers</summary>
+      <p class="muted">
+        If the headers could not be read automatically, open the email's ⋮ menu → "Show original",
+        copy the headers and paste them here. They are only sent to your analysis backend.
+      </p>
+      <textarea id="headersInput" spellcheck="false" aria-label="Message headers" placeholder="Delivered-To: …&#10;Authentication-Results: mx.google.com; …"></textarea>
+      <button type="button" id="headersScanButton">Scan with these headers</button>
+    </details>
+
+    <div id="content" aria-live="polite"></div>
+  </main>
+  <script type="module" src="sidepanel.js"></script>
+</body>
+</html>

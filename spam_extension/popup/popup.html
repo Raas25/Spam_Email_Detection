@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Spam &amp; Phishing Check</title>
+  <link rel="stylesheet" href="../styles/ui.css">
+</head>
+<body class="popup">
+  <main class="app">
+    <header class="app-header">
+      <h1>Spam &amp; Phishing Check</h1>
+      <button type="button" id="settingsButton" class="link-button">Settings</button>
+    </header>
+
+    <div id="backendStatus" class="backend-status" role="status">Checking the analysis backend…</div>
+
+    <div class="actions">
+      <button type="button" id="scanButton" class="primary" disabled>Scan this email</button>
+      <button type="button" id="panelButton">Full report</button>
+    </div>
+
+    <div id="content" aria-live="polite"></div>
+  </main>
+  <script type="module" src="popup.js"></script>
+</body>
+</html>

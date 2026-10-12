@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Spam Checker Settings</title>
+  <link rel="stylesheet" href="../styles/ui.css">
+</head>
+<body>
+  <main class="options">
+    <h1>Spam &amp; Phishing Email Detector: Settings</h1>
+
+    <form id="settingsForm" novalidate>
+      <fieldset>
+        <legend>Analysis backend</legend>
+        <label for="backendUrl" style="display:block">Backend URL</label>
+        <input type="url" id="backendUrl" name="backendUrl" required autocomplete="off" spellcheck="false">
+        <p class="hint" style="margin-left:0">
+          The FastAPI backend from this project, normally <code>http://127.0.0.1:8000</code>.
+          The extension sends the opened email's text, links, images and attachments to it for analysis.
+        </p>
+
+        <label id="consentRow" hidden>
+          <input type="checkbox" id="remoteBackendConsent" name="remoteBackendConsent">
+          <span>
+            I understand that the content of emails I scan (text, sender, links, images and attachments)
+            will be sent to this server, which is not on my computer.
+          </span>
+        </label>
+
+        <button type="button" id="testButton">Test connection</button>
+        <span id="testStatus" class="form-status" role="status"></span>
+      </fieldset>
+
+      <fieldset>
+        <legend>What to analyze</legend>
+        <label><input type="checkbox" id="scanImages" name="scanImages"> <span>Scan images for QR codes</span></label>
+        <label><input type="checkbox" id="ocr" name="ocr"> <span>Read text inside images (OCR, if installed on the backend)</span></label>
+        <label><input type="checkbox" id="fetchAttachments" name="fetchAttachments"> <span>Inspect attachment contents (files up to 5 MB, never opened or run)</span></label>
+        <p class="hint">When off, attachments are judged by name and type only.</p>
+        <label><input type="checkbox" id="fetchHeaders" name="fetchHeaders"> <span>Read message headers ("Show original") to check SPF, DKIM and DMARC</span></label>
+      </fieldset>
+
+      <fieldset>
+        <legend>In Gmail</legend>
+        <label><input type="checkbox" id="showPageButton" name="showPageButton"> <span>Show the "Check Spam" button on open emails</span></label>
+        <label><input type="checkbox" id="autoScan" name="autoScan"> <span>Scan automatically when an email is opened</span></label>
+      </fieldset>
+
+      <button type="submit" class="primary">Save</button>
+      <span id="saveStatus" class="form-status" role="status"></span>
+    </form>
+
+    <section class="section" style="margin-top:20px">
+      <h2>Privacy</h2>
+      <p class="muted">
+        Emails are only analyzed when you start a scan (or turn on automatic scanning). Content goes only to the backend
+        above; this extension does not use external AI services. Link reputation (Google Safe Browsing) is used only if the
+        backend operator configures an API key, and then only link addresses are sent to Google.
+      </p>
+    </section>
+  </main>
+  <script type="module" src="options.js"></script>
+</body>
+</html>
